@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: olivetti-app-deployment
+  labels:
+    app: olivetti-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: olivetti-app
+  template:
+    metadata:
+      labels:
+        app: olivetti-app
+    spec:
+      containers:
+        - name: olivetti-container
+          image: visri/olivetti-app:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5000
+
